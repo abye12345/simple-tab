@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="project.css" />
+    <title>move tab</title>
+  </head>
+  <body>
+    <ul>
+      <li onclick="movetab(0)">First Tab</li>
+      <li onclick="movetab(1)">Second Tab</li>
+      <li onclick="movetab(2)">Third Tab</li>
+      <li onclick="movetab(3)">Fourth Tab</li>
+      <div class="underline" id="underline"></div>
+    </ul>
+
+    <h3>
+      clicking each tab should hide the content of the other tab and show the
+      content of clicked tab by default, enable the first tab
+    </h3>
+
+    <div class="content">
+      HTML stands for Hyper Text Markup Language. HTML is the standard markup
+      language for creating Web pages. HTML describes the structure of a Web
+      page. HTML consists of a series of elements.
+    </div>
+    <div class="content">
+      CSS syntax refers to the way we write CSS code. In order to write CSS, you
+      need to first identify the element in your HTML page that you want to
+      style before adding styles using a plethora of built-in CSS properties.
+      There are multiple ways to identify and tell CSS which element in your
+      HTML page it should style.
+    </div>
+    <div class="content">
+      JavaScript is a scripting language used to create and control dynamic
+      website content, i.e. anything that moves, refreshes, or otherwise changes
+      on your screen without requiring you to manually reload a web page.
+      Features like: animated graphics. photo slideshows
+    </div>
+    <div class="content">
+      React can be used to build web, mobile, and desktop applications, making
+      it a versatile framework for cross-platform development. React Native, a
+      framework based on React is specifically designed for mobile app
+      development, while React Desktop allows you to create desktop applications
+      using web technologies
+    </div>
+    <script>
+      const tabs = document.querySelectorAll("ul li");
+      const show = document.querySelectorAll(".content");
+      function movetab(index) {
+        const selectedTab = tabs[index];
+        document.getElementById("underline").style.width =
+          selectedTab.offsetWidth + "px";
+        document.getElementById("underline").style.left =
+          selectedTab.offsetLeft + "px";
+        tabs.forEach((tab) => tab.classList.remove("active"));
+        selectedTab.classList.add("active");
+        //to show and hide the paragraph when i click the tab
+
+        show.forEach((content) => (content.style.display = "none"));
+        show[index].style.display = "block";
+      }
+
+      movetab(0);
+    </script>
+  </body>
+</html>
